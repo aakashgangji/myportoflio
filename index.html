@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -118,61 +118,59 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             text-align: center;
             position: relative;
             overflow: hidden;
+            padding-top: 15vh;
         }
         
         .crawl-container {
-            position: absolute;
-            top: 0;
-            left: 0;
+            position: relative;
             width: 100%;
-            height: 100%;
-            overflow: hidden;
+            height: auto;
             display: flex;
             justify-content: center;
             perspective: 400px;
+            z-index: 3;
+            margin-bottom: 1rem;
         }
         
         .crawl {
-    position: relative;
-    transform-origin: 50% 100%;
-    animation: crawl 10s linear forwards; /* changed duration & added forwards */
-    width: 80%;
-    max-width: 800px;
-    text-align: center;
-}
-
-@keyframes crawl {
-    0% {
-        top: 100vh;
-        transform: rotateX(20deg) translateZ(0);
-    }
-    100% { 
-        top: 5vh; /* Previously -3000px */
-        transform: rotateX(20deg) translateZ(0); /* Keep the same rotation */
-    }
-}
-
+            position: relative;
+            transform-origin: 50% 100%;
+            animation: crawl 10s linear forwards;
+            width: 80%;
+            max-width: 800px;
+            text-align: center;
+            z-index: 3;
+        }
+        
+        @keyframes crawl {
+            0% {
+                top: 100vh;
+                transform: rotateX(20deg) translateZ(0);
+            }
+            100% { 
+                top: 5vh; /* Previously -3000px */
+                transform: rotateX(20deg) translateZ(0); /* Keep the same rotation */
+            }
+        }
         
         .crawl-content {
             text-align: center;
         }
         
         .crawl h1 {
-    white-space: nowrap;
-    text-align: center;
-    text-overflow: ellipsis;
-    font-size: 3rem;
-    margin-bottom: 2rem;
-    color: var(--jedi-gold);
-    text-shadow: 0 0 10px rgba(255, 232, 31, 0.7);
-    
-}
-
+            white-space: nowrap;
+            text-align: center;
+            text-overflow: ellipsis;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: var(--jedi-gold);
+            text-shadow: 0 0 10px rgba(255, 232, 31, 0.7);
+        }
         
         .crawl p {
             font-size: 1.5rem;
@@ -181,17 +179,17 @@
         }
         
         .hero-content {
-            position: absolute;
-            bottom: 20%;
-            left: 0;
-            right: 0;
+            position: relative;
+            width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            z-index: 2;
+            z-index: 1;
             opacity: 0;
             animation: fadeIn 1s ease-in-out 2s forwards;
+            margin-top: 2rem;
+            padding-bottom: 1rem;
         }
         
         @keyframes fadeIn {
@@ -211,6 +209,7 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            z-index: 1;
         }
         
         .profile-pic:after {
@@ -510,40 +509,18 @@
         }
         
         .certificate-image {
-    width: 300px;
-    height: 500px;
-    background-image: url('images/agbody.png');
-    background-size: cover;
-    background-position: center;
-    box-shadow: 0 0 40px var(--jedi-gold), 0 0 80px var(--jedi-gold); /* outer glow only */
-    animation: float 6s ease-in-out infinite;
-    position: relative;
-    border: none;
-    border-radius: 0;
-}
-
-
-
-
-        
-        /* .certificate-image:before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                to bottom right,
-                transparent 45%,
-                rgba(75, 213, 238, 0.2) 50%,
-                transparent 55%
-            );
-            animation: shine 3s infinite;
+            width: 400px;
+            height: 600px;
+            background-image: url('images/agbody.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            animation: float 6s ease-in-out infinite;
+            position: relative;
+            border: none;
+            border-radius: 0;
         }
-         */
-
-
+        
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-20px); }
@@ -793,38 +770,31 @@
         
         /* Scroll Down Indicator */
         .scroll-down {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--jedi-blue);
-            font-size: 2rem;
-            animation: bounce 2s infinite;
-            cursor: pointer;
-            padding: 10px;
-            z-index: 10;
-            opacity: 0;
-            animation: fadeIn 1s ease-in-out 3s forwards, bounce 2s infinite 7s;
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
-            40% { transform: translateY(-20px) translateX(-50%); }
-            60% { transform: translateY(-10px) translateX(-50%); }
+            display: none;
         }
         
         /* Responsive */
         @media (max-width: 768px) {
+            header {
+                padding-top: 10vh;
+            }
+            
+            .crawl-container {
+                margin-bottom: 0.5rem;
+            }
+            
+            .crawl {
+                width: 90%;
+            }
+            
             .crawl h1 {
                 font-size: 2rem;
+                white-space: normal;
+                word-wrap: break-word;
             }
             
-            .crawl p {
-                font-size: 1.2rem;
-            }
-            
-            .hero-content h2 {
-                font-size: 2rem;
+            .hero-content {
+                margin-top: 1rem;
             }
             
             .about-content {
@@ -858,8 +828,8 @@
             }
             
             .certificate-image {
-                width: 250px;
-                height: 350px;
+                width: 300px;
+                height: 450px;
             }
         }
     </style>
@@ -896,10 +866,6 @@
             </div>
         </div>
         
-        <a href="#about" class="scroll-down" aria-label="Scroll to About Section">
-            <i class="fas fa-chevron-down"></i>
-        </a>
-        
     </header>
     
     <!-- Navigation - Fixed at Top with Socials -->
@@ -922,18 +888,16 @@
             </ul>
     
             <!-- Right: Social Icons -->
-            <div class="social-nav" style="flex: 1; display: flex; justify-content: flex-end; align-items: center; gap: 15px;">
-                <a href="https://github.com/aakashgangji/" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/aakashgangji/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://x.com/aakashgangji" aria-label="X">
-                    <i style="display: flex; align-items: center; justify-content: center; width: 1.5em; height: 1.5em;">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1227" width="15" height="15" fill="currentColor">
-                            <path d="M1242 0H986L600 507 210 0H-36L420 621 0 1227h258l390-547 387 547h247L777 621z"/>
-                        </svg>
-                    </i>
+            <div class="social-nav" style="flex: 1; display: flex; justify-content: flex-end; align-items: center; gap: 20px;">
+                <a href="https://github.com/aakashgangji/" aria-label="GitHub" style="width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; text-decoration: none;"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/aakashgangji/" aria-label="LinkedIn" style="width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; text-decoration: none;"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://x.com/aakashgangji" aria-label="X" style="width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; text-decoration: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1227" width="15" height="15" fill="currentColor">
+                        <path d="M1242 0H986L600 507 210 0H-36L420 621 0 1227h258l390-547 387 547h247L777 621z"/>
+                    </svg>
                 </a>
-                <a href="https://www.instagram.com/aakashgangji/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.youtube.com/@aakashgangji" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.instagram.com/aakashgangji/" aria-label="Instagram" style="width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; text-decoration: none;"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@aakashgangji" aria-label="YouTube" style="width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; text-decoration: none;"><i class="fab fa-youtube"></i></a>
             </div>
         </div>
     </nav>
@@ -949,8 +913,8 @@
                 <div class="about-content">
                     <div class="about-text">
                         <h3>I am a Developer</h3>
-<p style="--i:0">Currently pursuing my Master’s in Information Science at Arizona State University (4.0 GPA), I’m also a Teaching Assistant guiding students through the galaxy of networks and communication tech.</p>
-<p style="--i:1">With multiple hackathon victories — including Faith (1st at Hack SoDA), Melodia (2nd at Sunhacks) and Tom Riddle's Diary(3rd at Innovation Hacks). I thrive on innovation. Whether it’s analyzing domain DNA or syncing beats to scale, I bring ideas to life.</p>
+<p style="--i:0">Currently pursuing my Master's in Information Science at Arizona State University (4.0 GPA), I'm also a Teaching Assistant guiding students through the galaxy of networks and communication tech.</p>
+<p style="--i:1">With multiple hackathon victories — including Faith (1st at Hack SoDA), Melodia (2nd at Sunhacks) and Tom Riddle's Diary(3rd at Innovation Hacks). I thrive on innovation. Whether it's analyzing domain DNA or syncing beats to scale, I bring ideas to life.</p>
 <p style="--i:2">Beyond the code and competitions, I believe in using technology to tell stories, solve real problems, and inspire the next generation of creators. The saga continues — and this is just the beginning.</p>
 
                         
@@ -1010,7 +974,7 @@
                         </div>
                         <div class="project-info">
                             <h3>Tom riddle's diary</h3>
-                            <p>A magical AI-powered diary that listens, remembers, and reflects like Tom Riddle’s diary (Harry Potter), but kind, mindful, and truly personal.</p>
+                            <p>A magical AI-powered diary that listens, remembers, and reflects like Tom Riddle's diary (Harry Potter), but kind, mindful, and truly personal.</p>
                             <div class="project-links">
                                 <a href="https://devpost.com/software/tom-riddle" class="saber-btn">Live Demo</a>
                                 <a href="https://github.com/sahilhadke/tom-riddles-diary" class="saber-btn">GitHub</a>
@@ -1026,7 +990,7 @@
                         </div>
                         <div class="project-info">
                             <h3>Domain DNA</h3>
-                            <p>Unmasking the haunted histories of domains so you don’t get spooked online.</p>
+                            <p>Unmasking the haunted histories of domains so you don't get spooked online.</p>
                             <div class="project-links">
                                 <a href="https://domaindna.aakashgangji.vip/" class="saber-btn">Live Demo</a>
                                 <a href="https://devpost.com/software/faith-vb43uw" class="saber-btn">GitHub</a>
@@ -1049,21 +1013,19 @@
                         <i class="fas fa-envelope"></i> gangjiaakash@gmail.com
                     </a>
                     
-                    <a href="images/FNU_Aakash.pdf" class="resume-btn" download="Aakash_Gangji_Resume.pdf">
+                    <a href="images/FNU_AakashGangji.pdf" class="resume-btn" download="Aakash_Gangji_Resume.pdf">
                         <i class="fas fa-download"></i> Download My Resume</a>
                     
                     <div class="social-links">
-                        <a href="https://github.com/aakashgangji/" aria-label="GitHub" style="--i:0"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/aakashgangji/" aria-label="LinkedIn" style="--i:1"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://x.com/aakashgangji" aria-label="X" style="--i:2;">
+                        <a href="https://github.com/aakashgangji/" aria-label="GitHub" style="--i:0; text-decoration: none;"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/aakashgangji/" aria-label="LinkedIn" style="--i:1; text-decoration: none;"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://x.com/aakashgangji" aria-label="X" style="--i:2; text-decoration: none;">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1227" width="20" height="20" fill="white">
                                 <path d="M1242 0H986L600 507 210 0H-36L420 621 0 1227h258l390-547 387 547h247L777 621z"/>
                             </svg>
                         </a>
-                                                <a href="https://www.instagram.com/aakashgangji/" aria-label="Instagram" style="--i:3"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.youtube.com/@aakashgangji" aria-label="YouTube" style="--i:4"> <i class="fab fa-youtube"></i></a>
-                        
-                        
+                        <a href="https://www.instagram.com/aakashgangji/" aria-label="Instagram" style="--i:3; text-decoration: none;"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@aakashgangji" aria-label="YouTube" style="--i:4; text-decoration: none;"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
             </div>
@@ -1073,7 +1035,7 @@
         <footer>
             <p>"Do. Or do not. There is no try." - Yoda</p>
             <p>© 2025 Aakash Gangji. All rights reserved.</p>
-            <a href="#" class="saber-btn">Back to Top</a>
+            <a href="#top" class="saber-btn">Back to Top</a>
             <div class="lightsaber"></div>
         </footer>
     </div>
