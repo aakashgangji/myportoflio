@@ -1064,19 +1064,15 @@
             if (window.scrollY > 100) {
                 nav.style.boxShadow = '0 0 20px var(--jedi-blue)';
             } else {
-                nav.style.boxShadow = 'none';
+                nav.style.boxShadow = '0 0 20px rgba(75, 213, 238, 0.3)';
             }
-            
-            // Animate sections as they come into view
-            document.querySelectorAll('section').forEach(section => {
-                const sectionTop = section.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                
-                if (sectionTop < windowHeight * 0.75) {
-                    section.querySelector('.section-content').style.animation = 'section-enter 1s ease forwards';
-                }
-            });
         });
     </script>
+
+    <!-- Vercel Speed Insights -->
+    <script>
+        window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
 </body>
 </html>
