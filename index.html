@@ -9,9 +9,6 @@
     <!-- Vercel Analytics -->
     <script defer src="/_vercel/insights/script.js"></script>
 
-    <!-- Vercel Speed Insights -->
-    <script defer src="/_vercel/speed-insights/script.js"></script>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Star Wars/Jedi Theme Styles */
@@ -1066,6 +1063,16 @@
             } else {
                 nav.style.boxShadow = '0 0 20px rgba(75, 213, 238, 0.3)';
             }
+            
+            // Animate sections as they come into view
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (sectionTop < windowHeight * 0.75) {
+                    section.querySelector('.section-content').style.animation = 'section-enter 1s ease forwards';
+                }
+            });
         });
     </script>
 
