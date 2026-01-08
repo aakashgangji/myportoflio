@@ -1,3 +1,3 @@
-# Aakash Gangji — Portfolio
+# Portfolio: Aakash
 
 Check out my portfolio: https://aakashgangji.vip/
